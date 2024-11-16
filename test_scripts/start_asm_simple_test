@@ -17,16 +17,16 @@ echo "testing $TEST_SOURCE ..." > $WORKING_PATH/$OUTPUT_FILE
 mv $WORKING_PATH/$TEST_SOURCE.cpp $WORKING_PATH/$TEST_SOURCE.wait_a_bit
 if compgen -G "$WORKING_PATH/*.c" ; then
   for f in $WORKING_PATH/*.c; do 
-    mv $f $f.input
-    sed -E "s/^[ \t]*(int|void)[ \t]+main\(/#pragma warning(default:4716)\nint main2(/g" $f.input > $f
-    rm $f.input
+    mv "$f" "$f.input"
+    sed -E "s/^[ \t]*(int|void)[ \t]+main\(/#pragma warning(default:4716)\nint main2(/g" "$f.input" > "$f"
+    rm "$f.input"
   done
 fi
 if compgen -G "$WORKING_PATH/*.cpp" ; then
   for f in $WORKING_PATH/*.cpp ; do 
-    mv $f $f.input
-    sed -E "s/^[ \t]*(int|void)[ \t]+main\(/#pragma warning(default:4716)\nint main2(/g" $f.input > $f
-    rm $f.input
+    mv "$f" "$f.input"
+    sed -E "s/^[ \t]*(int|void)[ \t]+main\(/#pragma warning(default:4716)\nint main2(/g" "$f.input" > "$f"
+    rm "$f.input"
   done
 fi
 mv $WORKING_PATH/$TEST_SOURCE.wait_a_bit $WORKING_PATH/$TEST_SOURCE.cpp
